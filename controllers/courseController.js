@@ -119,7 +119,7 @@ export const deleteLecture = catchAsyncError(async (req, res, next) => {
 
   if (!course) return next(new ErrorHandler("Course Not Found", 404));
 
-  const lecture = course.lectures.filter((item) => {
+  const lecture = course.lectures.find((item) => {
     if (item._id.toString() === lectureId.toString()) return item;
   });
 
