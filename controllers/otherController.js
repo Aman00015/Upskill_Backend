@@ -38,10 +38,10 @@ export const courseRequest = catchAsyncError(async (req, res, next) => {
 });
 
 export const becomeAInstructor = catchAsyncError(async (req, res, next) => {
-  const { name, email, message } = req.body;
+  const { name, email, course } = req.body;
 
   const file = req.file;
-  if (!name || !email || !message )
+  if (!name || !email || !course )
     return next(new ErrorHandler("All Fields Are Mandatory", 404));
 
   const fileUri = getDataUri(file);
@@ -51,7 +51,7 @@ export const becomeAInstructor = catchAsyncError(async (req, res, next) => {
   const to = process.env.MY_MAIL;
   const subject = "Request To Become An Instructor";
   const text = `I am ${name} and my email is ${email} . \n
-      ${message}`;
+      ${course}`;
   await sendEmail(to, subject, text);
 
   res.status(200).json({
