@@ -41,7 +41,7 @@ export const becomeAInstructor = catchAsyncError(async (req, res, next) => {
   const { name, email, message } = req.body;
 
   const file = req.file;
-  if (!name || !email || !message || !file)
+  if (!name || !email || !message )
     return next(new ErrorHandler("All Fields Are Mandatory", 404));
 
   const fileUri = getDataUri(file);
