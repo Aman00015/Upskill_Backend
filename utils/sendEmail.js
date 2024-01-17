@@ -13,6 +13,6 @@ export const sendEmail = async (to, subject, text) => {
     to,
     subject,
     text,
-    from: "myidgmail.com",
+    from: "amanmansuri1195@gmail.com",
   });
 };
