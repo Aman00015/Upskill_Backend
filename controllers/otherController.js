@@ -40,14 +40,14 @@ export const courseRequest = catchAsyncError(async (req, res, next) => {
 export const becomeAInstructor = catchAsyncError(async (req, res, next) => {
   const { name, email, course } = req.body;
 
-  // const file = req.file;
-  if (!name || !email || !course )
+  const file = req.file;
+  if (!name || !email || !course || !file)
     return next(new ErrorHandler("All Fields Are Mandatory", 404));
 
-  // const fileUri = getDataUri(file);
-  // const mycloud = await cloudinary.v2.uploader.upload(fileUri.content, {
-  //   resource_type: "auto",
-  // });
+  const fileUri = getDataUri(file);
+  const mycloud = await cloudinary.v2.uploader.upload(fileUri.content, {
+    resource_type: "auto",
+  });
   const to = process.env.MY_MAIL;
   const subject = "Request To Become An Instructor";
   const text = `I am ${name} and my email is ${email} . \n
