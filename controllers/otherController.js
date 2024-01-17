@@ -51,7 +51,7 @@ export const becomeAInstructor = catchAsyncError(async (req, res, next) => {
   const to = process.env.MY_MAIL;
   const subject = "Request To Become An Instructor";
   const text = `I am ${name} and my email is ${email} . \n
-      ${course} \n cv/resume - ${file.secure_url} `;
+      ${course} \n cv/resume - ${mycloud.secure_url}`;
   await sendEmail(to, subject, text);
 
   res.status(200).json({
