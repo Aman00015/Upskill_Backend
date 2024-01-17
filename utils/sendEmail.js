@@ -16,3 +16,4 @@ export const sendEmail = async (to, subject, text) => {
     from: "amanmansuri1195@gmail.com",
   });
 };
+
